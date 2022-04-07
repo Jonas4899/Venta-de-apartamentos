@@ -37,7 +37,7 @@ public class Cliente {
         return this.saldo;
     }
     
-    public void modiSaldo(int saldo) {
-        this.saldo = saldo;
+    public void calcSaldo(int valor_pagado, int valor_apto) {
+        this.saldo = valor_apto - valor_pagado;
     }
 }
