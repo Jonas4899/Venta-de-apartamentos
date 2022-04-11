@@ -1,10 +1,9 @@
 package grafica;
 
 import dto.Apartamento;
-import dto.Cliente;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import logica.GestorVentas;
+import utilidades.GArchivos;
 
 /**
  *
@@ -129,27 +128,18 @@ public class VentanaInicio extends javax.swing.JFrame {
     }
     
     public void consultarVenta() {
-        /*
         int identificacion = Integer.parseInt(cjIdentificacion.getText());
-        GestorVentas datos = new GestorVentas();
+        ArrayList apartamentos = (ArrayList)GArchivos.leer("listaApartamentos.ap");
         Apartamento n = new Apartamento();
         
-        for (int i=0; i < datos.apartamentos.size() ;i++) {
-            n = datos.apartamentos.get(i);
+        for(int i = 0; i < apartamentos.size(); i++){
+            
+            n = (Apartamento)apartamentos.get(i);
             if (n.cliente.obtIdentificacion() == identificacion) {
                 break;
             }
         }
-        
-        String nombre = n.cliente.obtNombre();
-        int valor_pagado = n.cliente.obtValor_pagado();
-        int saldo = n.cliente.obtSaldo();
-        int valor_apto = n.valor_apartamento;
-        int piso = n.num_piso;
-        int num_apto = n.num_apartamento;
-        
-        JOptionPane.showMessageDialog(this, "- Nombre: " + nombre + "- Num. Piso: " + piso + "- Num. Apto: " + num_apto + "- Valor del apartamento: " + valor_apto + "- Valor pagado: " + valor_pagado + "- Saldo: " + saldo);
-        */
+        JOptionPane.showMessageDialog(this, n.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

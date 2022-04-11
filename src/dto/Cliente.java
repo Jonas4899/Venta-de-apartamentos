@@ -1,9 +1,11 @@
 package dto;
 
+import java.io.Serializable;
+
 /**
  * @author Jonas
  */
-public class Cliente {
+public class Cliente implements Serializable {
     private String nombre;
     private int identificacion;
     private int valor_pagado;

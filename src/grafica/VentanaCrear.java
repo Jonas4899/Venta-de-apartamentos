@@ -5,6 +5,7 @@ import dto.Cliente;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import logica.GestorVentas;
+import utilidades.GArchivos;
 
 /**
  *
@@ -191,7 +192,7 @@ public class VentanaCrear extends javax.swing.JDialog {
             evt.consume();
         }
     }//GEN-LAST:event_cjAptoKeyTyped
-
+    
     /**
      * @param args the command line arguments
      */
@@ -200,6 +201,7 @@ public class VentanaCrear extends javax.swing.JDialog {
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 VentanaCrear dialog = new VentanaCrear(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -213,6 +215,8 @@ public class VentanaCrear extends javax.swing.JDialog {
         });
     }
     
+    static final ArrayList listaApartamentos = new ArrayList();
+    
     public void crearVenta() {
         String nombre = cjNombre.getText();
         int identificacion = Integer.parseInt(cjIdentificacion.getText());
@@ -224,7 +228,10 @@ public class VentanaCrear extends javax.swing.JDialog {
         int valor_apto = venta.calcValorApto(piso);
         
         Cliente cl = venta.crearCliente(nombre, identificacion, valor_pagado, valor_apto);
-        Apartamento a = venta.crearVenta(cl, piso, num_apto, valor_apto);
+        Apartamento apt = venta.crearVenta(cl, piso, num_apto, valor_apto);
+        
+        listaApartamentos.add(apt);
+        boolean b = GArchivos.guardar("listaApartamentos.ap", listaApartamentos);
         
         JOptionPane.showMessageDialog(this, "Creo la venta -> \n- Nombre: " + nombre + "\n- Identificacion: " + identificacion + "\n- Valor del apto: " + valor_apto + "\n- Saldo: " + cl.obtSaldo());
     }
