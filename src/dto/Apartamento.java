@@ -6,9 +6,9 @@ import java.io.Serializable;
  * @author Jonas
  */
 public class Apartamento implements Serializable {
-    public int num_piso;
-    public int num_apartamento;
-    public int valor_apartamento;
+    public Integer num_piso;
+    public Integer num_apartamento;
+    public Integer valor_apartamento;
     public Cliente cliente;
 
     @Override

@@ -4,6 +4,12 @@
  */
 package grafica;
 
+import dto.Apartamento;
+import java.util.ArrayList;
+import java.util.Objects;
+import javax.swing.JOptionPane;
+import utilidades.GArchivos;
+
 /**
  *
  * @author Jonas
@@ -16,6 +22,7 @@ public class VentanaActualizar extends javax.swing.JDialog {
     public VentanaActualizar(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        ponerValores();
     }
 
     /**
@@ -76,6 +83,11 @@ public class VentanaActualizar extends javax.swing.JDialog {
         getContentPane().add(jLabel8);
         jLabel8.setBounds(499, 174, 111, 20);
 
+        cjNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cjNombreActionPerformed(evt);
+            }
+        });
         cjNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 cjNombreKeyTyped(evt);
@@ -158,8 +170,12 @@ public class VentanaActualizar extends javax.swing.JDialog {
     }//GEN-LAST:event_cjAptoKeyTyped
 
     private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
-
+        actualizarCambios();
     }//GEN-LAST:event_btGuardarActionPerformed
+
+    private void cjNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cjNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cjNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +196,39 @@ public class VentanaActualizar extends javax.swing.JDialog {
                 dialog.setVisible(true);
             }
         });
+    }
+    
+    public ArrayList apartamentos = (ArrayList)GArchivos.leer("listaApartamentos.ap");
+    public int posicion;
+    
+    public void ponerValores() {
+        Apartamento n = new Apartamento();
+
+        for(int i = 0; i < apartamentos.size(); i++){
+
+            n = (Apartamento)apartamentos.get(i);
+            if (Objects.equals(VentanaInicio.identificacion, n.cliente.obtIdentificacion())) {
+                posicion = i;
+                cjNombre.setText(n.cliente.obtNombre());
+                cjPagado.setText(n.cliente.obtValor_pagado().toString());
+                cjPiso.setText(n.num_piso.toString());
+                cjApto.setText(n.num_apartamento.toString());
+            }
+        }
+    }
+        
+    public void actualizarCambios() {
+        Apartamento n = (Apartamento)apartamentos.get(posicion);
+        
+        n.cliente.modiNombre(cjNombre.getText());
+        n.cliente.modiValor_pagado(Integer.parseInt(cjPagado.getText()));
+        n.num_piso = Integer.parseInt(cjPiso.getText());
+        n.num_apartamento = Integer.parseInt(cjApto.getText());
+        
+        apartamentos.set(posicion, n);
+        boolean b = GArchivos.guardar("listaApartamentos.ap", apartamentos);
+        JOptionPane.showMessageDialog(this, "Se guardo (Teoricamente)" + b);
+        dispose();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -215,25 +215,59 @@ public class VentanaCrear extends javax.swing.JDialog {
         });
     }
     
-    static final ArrayList listaApartamentos = new ArrayList();
+    // static final ArrayList listaApartamentos = new ArrayList();
+    private ArrayList listaApartamentos = new ArrayList();
     
     public void crearVenta() {
-        String nombre = cjNombre.getText();
-        int identificacion = Integer.parseInt(cjIdentificacion.getText());
-        int valor_pagado = Integer.parseInt(cjPagado.getText());
-        int piso = Integer.parseInt(cjPiso.getText());
-        int num_apto = Integer.parseInt(cjApto.getText());
+        
+        // Traer ventas guardadas en el archivo
+        ArrayList aptosGuardados = (ArrayList)GArchivos.leer("listaApartamentos.ap");
+        if (aptosGuardados != null) {
+            listaApartamentos = aptosGuardados;
+        }
+        
+        String nombre = null;
+        Integer identificacion = null;
+        Integer valor_pagado = null;
+        Integer piso = null;
+        Integer num_apto = null;
+        Integer valor_apto = null;
         
         GestorVentas venta = new GestorVentas();
-        int valor_apto = venta.calcValorApto(piso);
+        
+        if (!"".equals(cjNombre.getText()) && !"".equals(cjIdentificacion.getText()) && !"".equals(cjPagado.getText()) && !"".equals(cjPiso.getText()) && !"".equals(cjApto.getText())) {
+            nombre = cjNombre.getText();
+            identificacion = Integer.parseInt(cjIdentificacion.getText());
+            valor_pagado = Integer.parseInt(cjPagado.getText());
+            piso = Integer.parseInt(cjPiso.getText());
+            num_apto = Integer.parseInt(cjApto.getText());
+            valor_apto = venta.calcValorApto(piso);
+        }
         
         Cliente cl = venta.crearCliente(nombre, identificacion, valor_pagado, valor_apto);
         Apartamento apt = venta.crearVenta(cl, piso, num_apto, valor_apto);
         
-        listaApartamentos.add(apt);
-        boolean b = GArchivos.guardar("listaApartamentos.ap", listaApartamentos);
-        
-        JOptionPane.showMessageDialog(this, "Creo la venta -> \n- Nombre: " + nombre + "\n- Identificacion: " + identificacion + "\n- Valor del apto: " + valor_apto + "\n- Saldo: " + cl.obtSaldo());
+        if (apt != null) {
+            
+            if (piso != null && (piso < 1 || piso > 24)) {
+                
+                JOptionPane.showMessageDialog(this, "El número de piso debe ser entre 1 y 24");
+            }
+            else if (num_apto != null && (num_apto < 1 || num_apto > 10)) {
+                
+                JOptionPane.showMessageDialog(this, "El número de apartamento debe ser entre 1 y 10");
+            }
+            else  {
+                
+                listaApartamentos.add(apt);
+                boolean b = GArchivos.guardar("listaApartamentos.ap", listaApartamentos);
+                JOptionPane.showMessageDialog(this, "Creo la venta -> \n- Nombre: " + nombre + "\n- Identificacion: " + identificacion + "\n- Valor del apto: " + valor_apto + "\n- Saldo: " + cl.obtSaldo());
+                dispose();
+            }
+        } else {
+            
+            JOptionPane.showMessageDialog(this, "No se creo la venta :(");
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

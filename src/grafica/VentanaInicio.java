@@ -2,6 +2,7 @@ package grafica;
 
 import dto.Apartamento;
 import java.util.ArrayList;
+import java.util.Objects;
 import javax.swing.JOptionPane;
 import utilidades.GArchivos;
 
@@ -102,6 +103,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btConsultaActionPerformed
 
     private void btActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActualizarActionPerformed
+        VentanaInicio.identificacion = Integer.parseInt(cjIdentificacion.getText());
         new VentanaActualizar(this, true).setVisible(true);
     }//GEN-LAST:event_btActualizarActionPerformed
 
@@ -112,7 +114,7 @@ public class VentanaInicio extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_cjIdentificacionKeyTyped
-
+  
     /**
      * @param args the command line arguments
      */
@@ -127,19 +129,28 @@ public class VentanaInicio extends javax.swing.JFrame {
         });
     }
     
+    public static Integer identificacion;
+    
     public void consultarVenta() {
-        int identificacion = Integer.parseInt(cjIdentificacion.getText());
-        ArrayList apartamentos = (ArrayList)GArchivos.leer("listaApartamentos.ap");
-        Apartamento n = new Apartamento();
         
-        for(int i = 0; i < apartamentos.size(); i++){
+        if (!"".equals(cjIdentificacion.getText())) {
             
-            n = (Apartamento)apartamentos.get(i);
-            if (n.cliente.obtIdentificacion() == identificacion) {
-                break;
+            VentanaInicio.identificacion = Integer.parseInt(cjIdentificacion.getText());
+            ArrayList apartamentos = (ArrayList)GArchivos.leer("listaApartamentos.ap");
+            Apartamento n = new Apartamento();
+
+            for(int i = 0; i < apartamentos.size(); i++){
+
+                n = (Apartamento)apartamentos.get(i);
+                if (Objects.equals(n.cliente.obtIdentificacion(), VentanaInicio.identificacion)) {
+                    break;
+                }
             }
+            JOptionPane.showMessageDialog(this, n.toString());
+        } else {
+            
+            JOptionPane.showMessageDialog(this, "Identificacion vacia.");
         }
-        JOptionPane.showMessageDialog(this, n.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -7,9 +7,9 @@ import java.io.Serializable;
  */
 public class Cliente implements Serializable {
     private String nombre;
-    private int identificacion;
-    private int valor_pagado;
-    private int saldo;
+    private Integer identificacion;
+    private Integer valor_pagado;
+    private Integer saldo;
     
     public String obtNombre() {
         return this.nombre;
@@ -19,7 +19,7 @@ public class Cliente implements Serializable {
         this.nombre = nombre;
     }
     
-    public int obtIdentificacion() {
+    public Integer obtIdentificacion() {
         return this.identificacion;
     }
     
@@ -27,7 +27,7 @@ public class Cliente implements Serializable {
         this.identificacion = identificacion;
     }
     
-    public int obtValor_pagado() {
+    public Integer obtValor_pagado() {
         return this.valor_pagado;
     }
     
@@ -35,7 +35,7 @@ public class Cliente implements Serializable {
         this.valor_pagado = valor_pagado;
     }
     
-    public int obtSaldo() {
+    public Integer obtSaldo() {
         return this.saldo;
     }
     
