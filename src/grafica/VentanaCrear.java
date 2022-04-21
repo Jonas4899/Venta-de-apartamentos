@@ -215,7 +215,6 @@ public class VentanaCrear extends javax.swing.JDialog {
         });
     }
     
-    // static final ArrayList listaApartamentos = new ArrayList();
     private ArrayList listaApartamentos = new ArrayList();
     
     public void crearVenta() {

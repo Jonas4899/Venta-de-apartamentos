@@ -227,7 +227,7 @@ public class VentanaActualizar extends javax.swing.JDialog {
         
         apartamentos.set(posicion, n);
         boolean b = GArchivos.guardar("listaApartamentos.ap", apartamentos);
-        JOptionPane.showMessageDialog(this, "Se guardo (Teoricamente)" + b);
+        JOptionPane.showMessageDialog(this, "Se actualizaron los datos");
         dispose();
     }
 
