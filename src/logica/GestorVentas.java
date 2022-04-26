@@ -10,7 +10,7 @@ public class GestorVentas {
        
     public Cliente crearCliente(String nombre, Integer identificacion, Integer valor_pagado, Integer valor_apto) {
         
-        if (nombre == null || identificacion == null || valor_pagado == null || valor_apto == null || nombre.isEmpty()){
+        if (nombre == null || identificacion == null || valor_pagado == null || valor_apto == null || nombre.isEmpty() || !"".equals(nombre)){
             return null;
         } else{
             Cliente cliente = new Cliente();
