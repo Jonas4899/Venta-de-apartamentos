@@ -5,6 +5,7 @@
 package grafica;
 
 import dto.Apartamento;
+import java.awt.Color;
 import java.util.Objects;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -36,18 +37,33 @@ public class VentanaConsultar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(null);
+        setBackground(new java.awt.Color(255, 255, 255));
 
+        jPanel2.setBackground(new java.awt.Color(18, 20, 32));
+        jPanel2.setLayout(null);
+
+        jPanel1.setBackground(new java.awt.Color(127, 99, 110));
         jPanel1.setLayout(null);
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 675, 422);
 
-        tabla.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel2.setBackground(new java.awt.Color(245, 249, 233));
+        jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(245, 249, 233));
+        jLabel2.setText("Venta de Apartamentos");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(340, 20, 280, 30);
+
+        jPanel2.add(jPanel1);
+        jPanel1.setBounds(0, 0, 940, 60);
+
+        tabla.setFont(new java.awt.Font("Berlin Sans FB", 0, 14)); // NOI18N
+        tabla.setForeground(new java.awt.Color(18, 20, 32));
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -56,12 +72,14 @@ public class VentanaConsultar extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(tabla);
+        jScrollPane1.setViewportView(tabla);
 
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(20, 20, 1010, 100);
+        jPanel2.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 110, 890, 70);
 
-        setSize(new java.awt.Dimension(1072, 191));
+        getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        setSize(new java.awt.Dimension(955, 262));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -149,8 +167,10 @@ public class VentanaConsultar extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

@@ -27,69 +27,104 @@ public class VentanaInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         btCrearVenta = new javax.swing.JButton();
         btConsulta = new javax.swing.JButton();
         btActualizar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         cjIdentificacion = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio");
-        getContentPane().setLayout(null);
+        setBackground(new java.awt.Color(51, 204, 255));
 
-        btCrearVenta.setBackground(new java.awt.Color(255, 255, 255));
-        btCrearVenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btCrearVenta.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(18, 20, 32));
+        jPanel1.setForeground(new java.awt.Color(102, 255, 102));
+        jPanel1.setLayout(null);
+
+        btCrearVenta.setBackground(new java.awt.Color(127, 99, 110));
+        btCrearVenta.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        btCrearVenta.setForeground(new java.awt.Color(18, 20, 32));
         btCrearVenta.setText("Crear venta");
         btCrearVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCrearVentaActionPerformed(evt);
             }
         });
-        getContentPane().add(btCrearVenta);
-        btCrearVenta.setBounds(180, 30, 210, 50);
+        jPanel1.add(btCrearVenta);
+        btCrearVenta.setBounds(250, 100, 210, 50);
 
-        btConsulta.setBackground(new java.awt.Color(255, 255, 255));
-        btConsulta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btConsulta.setForeground(new java.awt.Color(0, 0, 0));
+        btConsulta.setBackground(new java.awt.Color(127, 99, 110));
+        btConsulta.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        btConsulta.setForeground(new java.awt.Color(18, 20, 32));
         btConsulta.setText("Consultar venta");
         btConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btConsultaActionPerformed(evt);
             }
         });
-        getContentPane().add(btConsulta);
-        btConsulta.setBounds(90, 190, 180, 40);
+        jPanel1.add(btConsulta);
+        btConsulta.setBounds(130, 310, 180, 40);
 
-        btActualizar.setBackground(new java.awt.Color(255, 255, 255));
-        btActualizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btActualizar.setForeground(new java.awt.Color(0, 0, 0));
+        btActualizar.setBackground(new java.awt.Color(127, 99, 110));
+        btActualizar.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        btActualizar.setForeground(new java.awt.Color(18, 20, 32));
         btActualizar.setText("Actualizar datos y saldo");
         btActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btActualizar);
-        btActualizar.setBounds(290, 190, 250, 40);
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(0, 110, 610, 10);
+        jPanel1.add(btActualizar);
+        btActualizar.setBounds(340, 310, 250, 40);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Identificacion: ");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(90, 140, 120, 25);
+        jSeparator1.setBackground(new java.awt.Color(127, 99, 110));
+        jSeparator1.setForeground(new java.awt.Color(127, 99, 110));
+        jPanel1.add(jSeparator1);
+        jSeparator1.setBounds(0, 180, 710, 20);
 
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(245, 249, 233));
+        jLabel1.setText("Identificación:");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(280, 210, 140, 25);
+
+        cjIdentificacion.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        cjIdentificacion.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cjIdentificacion.setToolTipText("");
+        cjIdentificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cjIdentificacionActionPerformed(evt);
+            }
+        });
         cjIdentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 cjIdentificacionKeyTyped(evt);
             }
         });
-        getContentPane().add(cjIdentificacion);
-        cjIdentificacion.setBounds(230, 140, 310, 24);
+        jPanel1.add(cjIdentificacion);
+        cjIdentificacion.setBounds(130, 250, 460, 30);
 
-        setSize(new java.awt.Dimension(625, 309));
+        jPanel2.setBackground(new java.awt.Color(127, 99, 110));
+        jPanel2.setForeground(new java.awt.Color(245, 249, 233));
+        jPanel2.setLayout(null);
+
+        jLabel2.setBackground(new java.awt.Color(245, 249, 233));
+        jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(245, 249, 233));
+        jLabel2.setText("Venta de Apartamentos");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(230, 20, 280, 30);
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 0, 710, 60);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        setSize(new java.awt.Dimension(725, 433));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -115,6 +150,10 @@ public class VentanaInicio extends javax.swing.JFrame {
             evt.consume();
         }
     }//GEN-LAST:event_cjIdentificacionKeyTyped
+
+    private void cjIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cjIdentificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cjIdentificacionActionPerformed
   
     /**
      * @param args the command line arguments
@@ -147,6 +186,9 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JButton btCrearVenta;
     private javax.swing.JTextField cjIdentificacion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

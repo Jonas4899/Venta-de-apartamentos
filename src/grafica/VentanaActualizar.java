@@ -36,10 +36,8 @@ public class VentanaActualizar extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cjNombre = new javax.swing.JTextField();
@@ -48,43 +46,37 @@ public class VentanaActualizar extends javax.swing.JDialog {
         cjPiso = new javax.swing.JTextField();
         cjApto = new javax.swing.JTextField();
         btGuardar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("VENTA DE APARTAMENTOS");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(291, 26, 320, 32);
+        jPanel1.setBackground(new java.awt.Color(18, 20, 32));
+        jPanel1.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("DATOS CLIENTE");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(137, 70, 137, 35);
+        jLabel7.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(245, 249, 233));
+        jLabel7.setText("Valor pago ");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(50, 190, 100, 21);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Valor pago: ");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(80, 180, 74, 20);
+        jLabel4.setBackground(new java.awt.Color(245, 249, 233));
+        jLabel4.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(245, 249, 233));
+        jLabel4.setText("Numero de piso ");
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(510, 140, 140, 21);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("DATOS APARTAMENTO");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(546, 75, 205, 25);
+        jLabel8.setBackground(new java.awt.Color(245, 249, 233));
+        jLabel8.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(245, 249, 233));
+        jLabel8.setText("Numero de apto. ");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(510, 190, 150, 21);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Numero de piso: ");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(499, 129, 105, 20);
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Numero de apto.: ");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(499, 174, 111, 20);
-
+        cjNombre.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         cjNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cjNombreActionPerformed(evt);
@@ -95,51 +87,82 @@ public class VentanaActualizar extends javax.swing.JDialog {
                 cjNombreKeyTyped(evt);
             }
         });
-        getContentPane().add(cjNombre);
-        cjNombre.setBounds(250, 130, 208, 24);
+        jPanel1.add(cjNombre);
+        cjNombre.setBounds(230, 140, 208, 27);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Nombre completo:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(79, 123, 139, 32);
+        jLabel5.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(245, 249, 233));
+        jLabel5.setText("Nombre completo");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(50, 140, 150, 32);
 
+        cjPagado.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         cjPagado.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 cjPagadoKeyTyped(evt);
             }
         });
-        getContentPane().add(cjPagado);
-        cjPagado.setBounds(250, 170, 208, 24);
+        jPanel1.add(cjPagado);
+        cjPagado.setBounds(230, 180, 208, 27);
 
+        cjPiso.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         cjPiso.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 cjPisoKeyTyped(evt);
             }
         });
-        getContentPane().add(cjPiso);
-        cjPiso.setBounds(622, 128, 149, 24);
+        jPanel1.add(cjPiso);
+        cjPiso.setBounds(670, 140, 160, 27);
 
+        cjApto.setFont(new java.awt.Font("Berlin Sans FB", 0, 18)); // NOI18N
         cjApto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 cjAptoKeyTyped(evt);
             }
         });
-        getContentPane().add(cjApto);
-        cjApto.setBounds(622, 173, 149, 24);
+        jPanel1.add(cjApto);
+        cjApto.setBounds(670, 190, 160, 27);
 
-        btGuardar.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        btGuardar.setForeground(new java.awt.Color(0, 0, 0));
-        btGuardar.setText("GUARDAR");
+        btGuardar.setBackground(new java.awt.Color(127, 99, 110));
+        btGuardar.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
+        btGuardar.setForeground(new java.awt.Color(18, 20, 32));
+        btGuardar.setText("Guardar");
         btGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btGuardar);
-        btGuardar.setBounds(320, 240, 232, 46);
+        jPanel1.add(btGuardar);
+        btGuardar.setBounds(330, 250, 232, 46);
 
-        setSize(new java.awt.Dimension(883, 355));
+        jPanel2.setBackground(new java.awt.Color(127, 99, 110));
+        jPanel2.setLayout(null);
+
+        jLabel2.setBackground(new java.awt.Color(245, 249, 233));
+        jLabel2.setFont(new java.awt.Font("Berlin Sans FB", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(245, 249, 233));
+        jLabel2.setText("Venta de Apartamentos");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(320, 20, 280, 30);
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 0, 900, 60);
+
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(245, 249, 233));
+        jLabel1.setText("DATOS CLIENTE");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(160, 80, 170, 35);
+
+        jLabel3.setFont(new java.awt.Font("Berlin Sans FB", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(245, 249, 233));
+        jLabel3.setText("DATOS APARTAMENTO");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(550, 80, 250, 27);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+
+        setSize(new java.awt.Dimension(912, 344));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -253,5 +276,7 @@ public class VentanaActualizar extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
