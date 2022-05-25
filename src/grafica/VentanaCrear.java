@@ -2,7 +2,6 @@ package grafica;
 
 import dto.Apartamento;
 import dto.Cliente;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import logica.GestorVentas;
 import utilidades.GArchivos;
@@ -214,16 +213,8 @@ public class VentanaCrear extends javax.swing.JDialog {
             }
         });
     }
-    
-    private ArrayList listaApartamentos = new ArrayList();
-    
+ 
     public void crearVenta() {
-        
-        // Traer ventas guardadas en el archivo
-        ArrayList aptosGuardados = (ArrayList)GArchivos.leer("listaApartamentos.ap");
-        if (aptosGuardados != null) {
-            listaApartamentos = aptosGuardados;
-        }
         
         String nombre = null;
         Integer identificacion = null;
@@ -247,20 +238,28 @@ public class VentanaCrear extends javax.swing.JDialog {
         Apartamento apt = venta.crearVenta(cl, piso, num_apto, valor_apto);
         
         if (apt != null) {
-            
+            // Si el piso esta en el rango correcto
             if (piso != null && (piso < 1 || piso > 24)) {
                 
-                JOptionPane.showMessageDialog(this, "El número de piso debe ser entre 1 y 24");
-            }
+                JOptionPane.showMessageDialog(this, "El número de piso debe ser entre 1 y 24.");
+            } // Si el apartamento esta en el rango correcto
             else if (num_apto != null && (num_apto < 1 || num_apto > 10)) {
                 
-                JOptionPane.showMessageDialog(this, "El número de apartamento debe ser entre 1 y 10");
+                JOptionPane.showMessageDialog(this, "El número de apartamento debe ser entre 1 y 10.");
+            } // Si la cuota inicial es de minimo 10%
+            else if (valor_pagado < (valor_apto * 0.10)) {
+                
+                JOptionPane.showMessageDialog(this, "La cuota tiene que ser minimo de: " + (valor_apto * 10) / 100 + ".\nQue corresponde al 10% del valor del apartamento, el cual es: " + valor_apto);
+            } // Si el apartamento ya ha sido apartado por una persona
+            else if (venta.aptoApartado(piso, num_apto)) {
+                
+                JOptionPane.showMessageDialog(this, "Este apartamento ya ha sido apartado por otra persona.");
             }
             else  {
                 
-                listaApartamentos.add(apt);
-                boolean b = GArchivos.guardar("listaApartamentos.ap", listaApartamentos);
-                JOptionPane.showMessageDialog(this, "Creo la venta -> \n- Nombre: " + nombre + "\n- Identificacion: " + identificacion + "\n- Valor del apto: " + valor_apto + "\n- Saldo: " + cl.obtSaldo());
+                venta.listaApartamentos.add(apt);
+                boolean b = GArchivos.guardar("listaApartamentos.ap", venta.listaApartamentos);
+                JOptionPane.showMessageDialog(this, "Se creo la venta exitosamente!");
                 dispose();
             }
         } else {

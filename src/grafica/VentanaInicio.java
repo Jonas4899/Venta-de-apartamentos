@@ -1,10 +1,9 @@
 package grafica;
 
 import dto.Apartamento;
-import java.util.ArrayList;
 import java.util.Objects;
 import javax.swing.JOptionPane;
-import utilidades.GArchivos;
+import logica.GestorVentas;
 
 /**
  *
@@ -66,16 +65,16 @@ public class VentanaInicio extends javax.swing.JFrame {
         btActualizar.setBackground(new java.awt.Color(255, 255, 255));
         btActualizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btActualizar.setForeground(new java.awt.Color(0, 0, 0));
-        btActualizar.setText("Actualizar datos");
+        btActualizar.setText("Actualizar datos y saldo");
         btActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btActualizarActionPerformed(evt);
             }
         });
         getContentPane().add(btActualizar);
-        btActualizar.setBounds(290, 190, 190, 40);
+        btActualizar.setBounds(290, 190, 250, 40);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(0, 110, 570, 10);
+        jSeparator1.setBounds(0, 110, 610, 10);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Identificacion: ");
@@ -88,9 +87,9 @@ public class VentanaInicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cjIdentificacion);
-        cjIdentificacion.setBounds(230, 140, 250, 24);
+        cjIdentificacion.setBounds(230, 140, 310, 24);
 
-        setSize(new java.awt.Dimension(588, 309));
+        setSize(new java.awt.Dimension(625, 309));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -99,7 +98,9 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btCrearVentaActionPerformed
 
     private void btConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultaActionPerformed
-        consultarVenta();
+        // consultarVenta();
+        guardarIdentificacion();
+        new VentanaConsultar(this, true).setVisible(true);
     }//GEN-LAST:event_btConsultaActionPerformed
 
     private void btActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btActualizarActionPerformed
@@ -131,22 +132,9 @@ public class VentanaInicio extends javax.swing.JFrame {
     
     public static Integer identificacion;
     
-    public void consultarVenta() {
-        
+    public void guardarIdentificacion() {
         if (!"".equals(cjIdentificacion.getText())) {
-            
-            VentanaInicio.identificacion = Integer.parseInt(cjIdentificacion.getText());
-            ArrayList apartamentos = (ArrayList)GArchivos.leer("listaApartamentos.ap");
-            Apartamento n = new Apartamento();
-
-            for(int i = 0; i < apartamentos.size(); i++){
-
-                n = (Apartamento)apartamentos.get(i);
-                if (Objects.equals(n.cliente.obtIdentificacion(), VentanaInicio.identificacion)) {
-                    break;
-                }
-            }
-            JOptionPane.showMessageDialog(this, n.toString());
+            identificacion = Integer.parseInt(cjIdentificacion.getText());
         } else {
             
             JOptionPane.showMessageDialog(this, "Identificacion vacia.");

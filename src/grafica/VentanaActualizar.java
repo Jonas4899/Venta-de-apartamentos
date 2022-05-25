@@ -5,9 +5,11 @@
 package grafica;
 
 import dto.Apartamento;
+import dto.Estados;
 import java.util.ArrayList;
 import java.util.Objects;
 import javax.swing.JOptionPane;
+import logica.GestorVentas;
 import utilidades.GArchivos;
 
 /**
@@ -62,9 +64,9 @@ public class VentanaActualizar extends javax.swing.JDialog {
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Valor pagado: ");
+        jLabel7.setText("Valor pago: ");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(80, 180, 89, 20);
+        jLabel7.setBounds(80, 180, 74, 20);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("DATOS APARTAMENTO");
@@ -137,7 +139,7 @@ public class VentanaActualizar extends javax.swing.JDialog {
         getContentPane().add(btGuardar);
         btGuardar.setBounds(320, 240, 232, 46);
 
-        setSize(new java.awt.Dimension(883, 351));
+        setSize(new java.awt.Dimension(883, 355));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -198,15 +200,15 @@ public class VentanaActualizar extends javax.swing.JDialog {
         });
     }
     
-    public ArrayList apartamentos = (ArrayList)GArchivos.leer("listaApartamentos.ap");
     public int posicion;
     
     public void ponerValores() {
         Apartamento n = new Apartamento();
+        GestorVentas gestor = new GestorVentas();
 
-        for(int i = 0; i < apartamentos.size(); i++){
+        for(int i = 0; i < gestor.listaApartamentos.size(); i++){
 
-            n = (Apartamento)apartamentos.get(i);
+            n = (Apartamento)gestor.listaApartamentos.get(i);
             if (Objects.equals(VentanaInicio.identificacion, n.cliente.obtIdentificacion())) {
                 posicion = i;
                 cjNombre.setText(n.cliente.obtNombre());
@@ -218,16 +220,23 @@ public class VentanaActualizar extends javax.swing.JDialog {
     }
         
     public void actualizarCambios() {
-        Apartamento n = (Apartamento)apartamentos.get(posicion);
+        GestorVentas gestor = new GestorVentas();
+        Apartamento n = (Apartamento)gestor.listaApartamentos.get(posicion);
+        // Apartamento n = (Apartamento)apartamentos.get(posicion);
         
         n.cliente.modiNombre(cjNombre.getText());
         n.cliente.modiValor_pagado(Integer.parseInt(cjPagado.getText()));
         n.num_piso = Integer.parseInt(cjPiso.getText());
         n.num_apartamento = Integer.parseInt(cjApto.getText());
+        n.cliente.calcSaldo( Integer.parseInt(cjPagado.getText()), n.valor_apartamento);
         
-        apartamentos.set(posicion, n);
-        boolean b = GArchivos.guardar("listaApartamentos.ap", apartamentos);
-        JOptionPane.showMessageDialog(this, "Se actualizaron los datos");
+        if(n.cliente.obtSaldo() == 0) {
+            n.estado_compra = Estados.COMPRADO;
+        }
+        
+        gestor.listaApartamentos.set(posicion, n);
+        boolean b = GArchivos.guardar("listaApartamentos.ap", gestor.listaApartamentos);
+        JOptionPane.showMessageDialog(this, "Se actualizaron los datos exitosamente!");
         dispose();
     }
 
